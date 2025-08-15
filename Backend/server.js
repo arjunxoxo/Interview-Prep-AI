@@ -30,7 +30,7 @@ app.use("/api/auth", authRoutes);
 
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the AI Interview Prep Backend!");
+    res.send("Welcome to the AI Interview Prep Backend.");
 });
 
 const PORT = process.env.PORT || 3000;
