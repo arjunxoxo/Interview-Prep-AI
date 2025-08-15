@@ -14,7 +14,7 @@ const generateToken = (userId) => {
 // @access  Public
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password, profileImageUrl } = req.body;
+        const { name, email, password } = req.body;
 
         // Check if user already exists
         const existingUser = await User.findOne({ email });
@@ -30,8 +30,7 @@ const registerUser = async (req, res) => {
         const user = new User({
             name,
             email,
-            password: hashedPassword,
-            profileImageUrl,
+            password: hashedPassword
         });
 
         await user.save();
@@ -40,7 +39,6 @@ const registerUser = async (req, res) => {
             id: user._id,
             name: user.name,
             email: user.email,
-            profileImageUrl: user.profileImageUrl,
             token: generateToken(user._id),
         });
     } catch (error) {
@@ -71,7 +69,6 @@ const loginUser = async (req, res) => {
             id: user._id,
             name: user.name,
             email: user.email,
-            profileImageUrl: user.profileImageUrl,
             token: generateToken(user._id),
         });
     } catch (error) {
