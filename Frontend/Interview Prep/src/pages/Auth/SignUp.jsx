@@ -15,7 +15,7 @@ const SignUp = ({setCurrentPage}) => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         if(!fullName){
-            setError("Please enter your full name");
+            setError("Please enter your full name.");
             return;
         }
         if(!validateEmail(email)){
