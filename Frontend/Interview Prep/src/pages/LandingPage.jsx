@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import HERO_IMG from "../assets/hero-img.png";
 import { APP_FEATURES } from "../utils/data";
 import {LuSparkles} from "react-icons/lu";
+import Modal from '../components/Modal';
+import Login from '../pages/Auth/Login';
+import SignUp from '../pages/Auth/SignUp';
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const [openAuthModal, setOpenAuthModal] = useState(false);
@@ -108,6 +112,22 @@ const LandingPage = () => {
   Made with ❤️ by {"CODE FELLAS"}...
 </div>
       </div>
+      <Modal
+        isOpen={openAuthModal}
+        onClose={() => {
+            setOpenAuthModal(false); 
+            setCurrentPage("login");
+        }}
+        hideHeader>
+        <div>
+            {currentPage === "login" && (
+                <Login setCurrentPage={setCurrentPage}/>
+            )}
+            {currentPage === "signup" && (
+                <SignUp setCurrentPage={setCurrentPage}/>
+            )}
+        </div>
+      </Modal>
     </>
   );
 };
