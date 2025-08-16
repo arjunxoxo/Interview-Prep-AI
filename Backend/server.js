@@ -34,6 +34,7 @@ app.use("/api/sessions", sessionRoutes);
 app.use("/api/questions", questionRoutes);
 
 
+
 app.get("/", (req, res) => {
     res.send("Welcome to the AI Interview Prep Backend!");
 });

@@ -16,6 +16,7 @@ const addQuestionToSession = async (req, res) => {
         if (!session) {
             return res.status(404).json({ success: false, message: 'Session not found' });
         }
+        // Create new questions
 
         const createdQuestions = await Question.insertMany(
             questions.map(q => ({
