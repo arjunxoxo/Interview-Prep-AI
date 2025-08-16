@@ -8,6 +8,7 @@ const app = express();
 
 // Import routes
 const authRoutes = require("./routes/auth.route");
+const sessionRoutes = require("./routes/session.route");
 
 // Connect to MongoDB
 connectDB();
@@ -27,6 +28,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"), {}));
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/sessions", sessionRoutes);
 
 
 app.get("/", (req, res) => {
