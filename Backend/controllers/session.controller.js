@@ -65,8 +65,8 @@ const getSessionById = async (req, res) => {
             .populate({
                 path: "questions",
                 options: { sort: { isPinned: -1, createdAt: 1 } }
-            });
-
+            })
+            .exec();
         if (!session) {
             return res.status(404).json({ success: false, message: "Session not found" });
         }

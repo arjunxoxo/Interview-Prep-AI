@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/db.js");
 
+
 const app = express();
 
 // Import routes
@@ -14,7 +15,7 @@ const questionRoutes = require("./routes/question.route");
 // Connect to MongoDB
 connectDB();
 
-// Middleware
+// Middleware to handle CORS and JSON requests
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -31,6 +32,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"), {}));
 app.use("/api/auth", authRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/questions", questionRoutes);
+
 
 
 app.get("/", (req, res) => {
