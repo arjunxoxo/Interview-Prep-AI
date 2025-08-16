@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Inputs/Input';
 import { validateEmail } from '../../utils/helper';
+import axiosInstance from '../../utils/axiosInstance';
 
 const SignUp = ({setCurrentPage}) => {
     const [profilePic, setProfilePic] = useState(null);
@@ -31,7 +32,21 @@ const SignUp = ({setCurrentPage}) => {
         }
         setError("");
         // Sign Up API call
-        try{}
+        try{
+            const response=await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
+                name: fullName,
+                email,
+                password,
+            });
+
+            const {token}=response.data;
+            if(token){
+                localStorage.setItem("token", token);
+                updateUser(response.data);
+                navigate("/dashboard");
+            }  
+
+        }
         catch(error){
             if(error.response && error.response.data.message){
                 setError(error.response.data.message);
