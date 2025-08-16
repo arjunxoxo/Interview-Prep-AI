@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Inputs/Input';
 import { validateEmail } from '../../utils/helper';
 import axiosInstance from '../../utils/axiosInstance';
+import { UserContext } from '../../context/userContext';
 
 const SignUp = ({setCurrentPage}) => {
     const [profilePic, setProfilePic] = useState(null);
