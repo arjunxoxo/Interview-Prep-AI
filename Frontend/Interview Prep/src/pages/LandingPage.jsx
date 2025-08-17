@@ -23,7 +23,7 @@ const LandingPage = () => {
       navigate("/dashboard");
     }
     // Example: navigate to signup page
-    navigate("/signup");
+    // navigate("/signup");
   };
 
   return (
@@ -101,7 +101,7 @@ const LandingPage = () => {
         {/* First 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {APP_FEATURES.slice(0, 3).map((feature) => (
-            <div key={feature.id} className="bg-[#FFFEF8] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-100 transition border border-amber-100">
+            <div key={feature.id} className="bg-[#FFFEF8] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-200 border border-amber-100 cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
               <h3 className="text-base font-semibold mb-3">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>
@@ -110,7 +110,7 @@ const LandingPage = () => {
         {/* Last 2 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {APP_FEATURES.slice(3).map((feature) => (
-            <div key={feature.id} className="bg-[#FFFEF8] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-100 transition border border-amber-100">
+            <div key={feature.id} className="bg-[#FFFEF8] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-200 border border-amber-100 cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
               <h3 className="text-base font-semibol mb-3">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>

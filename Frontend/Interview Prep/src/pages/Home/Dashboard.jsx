@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import {LuPlus} from "react-icons/lu";
 import {CARD_BG} from "../../utils/data";
 import toast from 'react-hot-toast';
@@ -20,7 +21,7 @@ const Dashboard = () => {
 
   const fetchAllSessions=async()=>{
     try{
-      const response =await axiosInstance.get(API_PATHS.SESSIONS.GET_ALL);
+      const response =await axiosInstance.get(API_PATHS.SESSION.GET_ALL);
       setSessions(response.data);
     }catch(error){
       console.error("Error fetching sessions:", error);
