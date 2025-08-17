@@ -12,6 +12,9 @@ const authRoutes = require("./routes/auth.route");
 const sessionRoutes = require("./routes/session.route");
 const questionRoutes = require("./routes/question.route");
 
+const { generateInterviewQuestions, generateConceptExplanation } = require("./controllers/aiController");
+const { protect } = require("./middlewares/auth.middleware");
+
 // Connect to MongoDB
 connectDB();
 
@@ -33,7 +36,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/questions", questionRoutes);
 
-
+app.use("/api/ai/generate-questions",protect,generateInterviewQuestions);
+app.use("/api/ai/generate-explanation",protect,generateConceptExplanation);
 
 app.get("/", (req, res) => {
     res.send("Welcome to the AI Interview Prep Backend!");
