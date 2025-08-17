@@ -19,8 +19,8 @@ const generateInterviewQuestions = async (req, res) => {
         });
         let rawText = response.text;
         // clean it : Remove ```json and ``` from the start and end
-        const cleanedText = rawText.
-        replace(/^```json\s*/, "") // Remove ```json at the start
+        const cleanedText = rawText
+        .replace(/^```json\s*/, "") // Remove ```json at the start
         .replace(/```$/, "") // Remove ``` at the end
         .trim(); // Trim any extra whitespace
         // now safe to parse
