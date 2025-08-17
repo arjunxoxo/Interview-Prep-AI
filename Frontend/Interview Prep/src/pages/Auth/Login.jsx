@@ -55,7 +55,7 @@ const Login = ({setCurrentPage}) => {
         Please enter your details to login
     </p>
     <form onSubmit={handleLogin}>
-        <input
+        <Input
         value={email}
         onChange={({target})=>setEmail(target.value)}
         label="Email Address"
