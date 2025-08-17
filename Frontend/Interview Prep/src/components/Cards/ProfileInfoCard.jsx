@@ -18,7 +18,7 @@ const ProfileInfoCard=()=> {
                 <div
                     className=""
                 >
-                    {user.name || ""}
+                    {user?.name || ""}
                 </div>
                 <button
                     className="text-amber-600 text-sm font-semibold cursor-pointer hover:underline"
