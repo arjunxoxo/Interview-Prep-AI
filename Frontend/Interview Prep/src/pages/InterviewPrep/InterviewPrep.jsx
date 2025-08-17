@@ -10,6 +10,9 @@ import RoleInfoHeader from './components/RoleInfoHeader';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import QuestionCard from '../../components/Cards/QuestionCard';
+import AIResponsePreview from './components/AIResponsePreview';
+import Drawer from '../../components/Drawer';
+import SkeletonLoader from '../../components/Loader/SkeletonLoader';
 
 
 const InterviewPrep = () => {
@@ -39,7 +42,27 @@ const InterviewPrep = () => {
 
   // generate concept explanation
   const generateConceptExplanation = async (question) => {
-
+    try{
+      setErrorMsg("");
+      setExplanation(null)
+      setIsLoading(true);
+      setOpenLearnMoreDrawer(true);
+      const response=await axiosInstance.post(
+        API_PATHS.AI.GENERATE_EXPLANATION,
+        {
+          question,
+        }
+      );
+      if(response.data){
+        setExplanation(response.data.data);
+      }
+    }catch(error){
+      setExplanation(null)
+      setErrorMsg("Failed to generate explanation,Try again Later");
+      console.error("Error:",error);
+    }finally{
+      setIsLoading(false);
+    }
   };
 
   // Pin Question
@@ -120,6 +143,24 @@ const InterviewPrep = () => {
               })}
             </AnimatePresence>
           </div>
+        </div>
+
+        <div>
+          <Drawer
+            isOpen={openLearnMoreDrawer}
+            onClose={()=> setOpenLearnMoreDrawer(false)}
+            title={!isLoading && explanation?.title}
+            >
+              {errorMsg && (
+                <p className="">
+                  <LuCircleAlert className=""/>{errorMsg}
+                </p>
+              )}
+              {isLoading && <SkeletonLoader/>}
+              {!isLoading && explanation && (
+                <AIResponsePreview content={explanation?.explanation}/>
+              )}
+            </Drawer>
         </div>
       </div>
     </DashboardLayout>
