@@ -17,10 +17,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/interview-prep" element={<InterviewPrep />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route 
+        path="/interview-prep/:sessionId" element={<InterviewPrep />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
       </Routes>
 
       <Toaster
