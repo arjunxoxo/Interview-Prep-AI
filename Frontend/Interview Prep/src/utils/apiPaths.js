@@ -7,8 +7,6 @@ export const API_PATHS = {
         GET_PROFILE: "/api/auth/profile",
     },
 
-    
-
     AI:{
         GENERATE_QUESTIONS: "/api/ai/generate-questions",
         GENERATE_EXPLANATION: "/api/ai/generate-explanation",
