@@ -28,35 +28,42 @@ const LandingPage = () => {
       <div className="w-full min-h-full bg-[#FFFCEF]">
         <div className="w-[500px] h-[500px] bg-amber-200/20 blur-[65px] absolute top-0 left-0" />
 
-        <div className="container mx-auto px-4 pt-6 pb-[200px] relative z-10">
-          {/* Header / Navbar */}
-          <header className="flex justify-between items-center mb-16">
-            <div className="text-xl text-black font-bold cursor-pointer" onClick={() => navigate('/')}>
-              Interview Prep AI
-            </div>
+        {/* Full-width Professional Navbar */}
+        <header className="w-full flex justify-between items-center h-20 px-8 bg-white shadow-md border-b border-gray-200 z-20 relative">
+          <div
+            className="text-2xl text-gray-900 font-bold cursor-pointer select-none"
+            onClick={() => navigate('/')}
+            aria-label="Go to Homepage"
+          >
+            Interview Prep AI
+          </div>
 
-            <div className="flex items-center gap-4">
-              {user ? (
-                <>
-                  <button
-                    onClick={() => navigate("/dashboard")}
-                    className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity cursor-pointer"
-                  >
-                    Dashboard
-                  </button>
-                  <ProfileInfoCard />
-                </>
-              ) : (
+          <div className="flex items-center gap-6">
+            {user ? (
+              <>
                 <button
-                  className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:opacity-90 transition-opacity cursor-pointer"
-                  onClick={() => setOpenAuthModal(true)}
+                  onClick={() => navigate("/dashboard")}
+                  className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-6 py-3 rounded-full hover:opacity-95 transition-opacity shadow-md shadow-orange-300 cursor-pointer"
+                  aria-label="Go to Dashboard"
                 >
-                  Login / Sign Up
+                  Dashboard
                 </button>
-              )}
-            </div>
-          </header>
+                <ProfileInfoCard />
+              </>
+            ) : (
+              <button
+                className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-8 py-3 rounded-full hover:opacity-95 transition-opacity shadow-md shadow-orange-300 active:scale-95"
+                onClick={() => setOpenAuthModal(true)}
+                aria-label="Open Login or Sign Up modal"
+              >
+                Login / Sign Up
+              </button>
+            )}
+          </div>
+        </header>
 
+        {/* Content container starts below the navbar */}
+        <div className="container mx-auto px-4 pt-10 pb-[200px] relative z-10">
           {/* Hero Section */}
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 pr-4 mb-8 md:mb-0">
@@ -92,11 +99,13 @@ const LandingPage = () => {
         </div>
       </div>
 
+      {/* Hero Image Section */}
       <div className="w-full min-h-full relative z-10">
         <section className="flex items-center justify-center -mt-35">
           <img src={HERO_IMG} alt="Hero Image" className="w-[80vw] rounded-lg" />
         </section>
 
+        {/* Features Section */}
         <div className="w-full min-h-full bg-[#FFFCEF] mt-10">
           <div className="container mx-auto px-4 pt-10 pb-20">
             <section className="mt-5">
@@ -133,11 +142,13 @@ const LandingPage = () => {
           </div>
         </div>
 
+        {/* Footer */}
         <div className="text-sm bg-gray-50 text-secondary text-center p-5 mt-5">
           Made with ❤️ by {"CODE FELLAS"}...
         </div>
       </div>
 
+      {/* Auth Modal */}
       <Modal
         isOpen={openAuthModal}
         onClose={() => {
